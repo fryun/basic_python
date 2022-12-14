@@ -1,3 +1,4 @@
+from copy import copy
 
 def print_var_ref(a,b,c,d,name=None):
     print (f"======================== {name} ==============================") 
@@ -20,7 +21,7 @@ def print_equality(a,b,name):
 
 
 if __name__ == '__main__':    
-    #variable a memory references
+    #memory references
     a = 10
     b = "hello world!"
     c = [a, b]
@@ -49,7 +50,7 @@ if __name__ == '__main__':
     
     
     a.append(5)
-    b.append(5)
+    b.append(50)
     print_equality(a,b,"Test 3")
     
     
@@ -114,8 +115,22 @@ if __name__ == '__main__':
     
     
     # #Everything is an object
-    # print ("id print_equality :", id(print_equality), "|| type a :", type(print_equality))
-    # c = print_equality
-    # print_equality(c, print_equality, "Test")
+    c = print_equality
+    print_equality(c, print_equality, "Test 14")
     
-    # c(a,b, "Test")
+    c(a,b, "Test 15")
+    
+
+    def single_list(some_list:list):
+        result_list = []
+        for ls in some_list:
+            if type(ls) != list:
+                result_list.append(ls)
+            else:
+                result_list.extend(single_list(ls))
+        return result_list
+    
+    a = [1,2,3,[4,5,6,[7,8,9,[10,11]]]]
+    b = single_list(a)
+    
+    print (b) 
