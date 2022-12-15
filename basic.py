@@ -154,3 +154,87 @@ if __name__ == '__main__':
 
     simple()
     print_equality(a,b, "Test 17")
+    
+    
+    # *args *kwargs
+    def simple(a, b, *args, kw, kw2="KW2", **kwargs):
+        print ("======================== Test 18 =========================")
+        print (a, b, args, kw, kw2, kwargs)
+        print ()
+    simple (10, 500, 5000, 50000, kw=700, kw3="saya", kw4="kamu")
+    
+    
+    #wajib pake kwargs
+    def simple (*, a, b):
+        print ("======================== Test 19 =========================")
+        print (a, b)
+        print ()
+    simple (a="Test", b=50000)
+    # simple ("Test", 50000) #bakal error
+    
+    
+    print ("======================== Test 20 =========================")
+    def simple(a, b):
+    # def simple(a, b, c=None):
+        print (a, b)
+        # if c:
+        #     print(c)
+            
+    some_var01 = simple(10, 20)
+    some_var02 = simple(100, 200)
+    # enhance_simple = simple(1000, 2000, 5000)
+    print ()
+
+    
+    print ("======================== Test 21 =========================")
+    from datetime import datetime
+    import time
+    
+    print ("OK")    
+    def simple_log (message, time=None):
+        if not time:
+            time=datetime.now()
+        print (time, ":", message)
+    
+    test01 = simple_log(10)
+    time.sleep(5)
+    test02 = simple_log(50)
+    print ()
+
+    def simple_log (message, time=datetime.now()):
+        print (time, ":", message)
+        
+    print ("NOT OK")
+    test01 = simple_log(10)
+    time.sleep(5)
+    test02 = simple_log(50)
+    print ()
+    
+    
+    print ("======================== Test 22 =========================")
+    list001, list01, list002, list02 = [], [], [], []
+    
+    def add_item(item, item_list:list=[]):
+        item_list.append(item)
+        return item_list
+    
+    print ("OK")
+    list001 = add_item(1, list001)
+    add_item(2, list001)
+    print (list001)
+    
+    list002 = add_item(10, list002)
+    add_item(20,list002)
+    print (list002)
+    print ()
+    
+    print ("NOT OK")
+    list01 = add_item(1)
+    add_item(2, list01)
+    print(list01)
+    
+    list02 = add_item(10)
+    add_item(20,list02)
+    
+    print(list02)
+    
