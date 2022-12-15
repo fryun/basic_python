@@ -212,7 +212,7 @@ if __name__ == '__main__':
     
     
     print ("======================== Test 22 =========================")
-    list001, list01, list002, list02 = [], [], [], []
+    list001, list002 = [], []
     
     def add_item(item, item_list:list=[]):
         item_list.append(item)
@@ -229,12 +229,12 @@ if __name__ == '__main__':
     print ()
     
     print ("NOT OK")
-    list01 = add_item(1)
-    add_item(2, list01)
-    print(list01)
+    list001 = add_item(1)
+    add_item(2, list001)
+    print(list001)
     
-    list02 = add_item(10)
-    add_item(20,list02)
+    list002 = add_item(10)
+    add_item(20,list002)
     
-    print(list02)
+    print(list002)
     
