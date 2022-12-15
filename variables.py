@@ -1,5 +1,3 @@
-from copy import copy
-
 def print_var_ref(a,b,c,d,name=None):
     print (f"======================== {name} ==============================") 
     print ("id a:", id(a), "|| type :", type(a), "|| val :", a)
@@ -10,17 +8,17 @@ def print_var_ref(a,b,c,d,name=None):
 
 def print_equality(a,b,name): 
     """to test the equality of variables"""
-    print (f"======================== {name} ==============================") 
+    print (f"======================== {name} ==============================")
     print (f"value a : {a}")
     print (f"value b : {b}")
     print ("id a :", id(a), "|| type a :", type(a))
     print ("id b :", id(b), "|| type b :", type(b))
     print ("a == b :", a == b)
     print ("a is b :", a is b)
-    print ()    
+    print ()
 
 
-if __name__ == '__main__':    
+if __name__ == '__main__':
     #memory references
     a = 10
     b = "hello world!"
@@ -30,9 +28,8 @@ if __name__ == '__main__':
         'b' : b,
         'c' : c,
          }
+
     print_var_ref(a,b,c,d, name="Test memory references")
-    
-    
     # variable equality
     a = 10
     b = 10.0
@@ -132,5 +129,28 @@ if __name__ == '__main__':
     
     a = [1,2,3,[4,5,6,[7,8,9,[10,11]]]]
     b = single_list(a)
-    
-    print (b) 
+    print_equality(a,b, "Test 16")
+
+
+    print ("======================== Test 17 init =========================")
+    c = "di set di global scope"
+    def simple():
+        a = 10
+        b = 15
+        def inner_simple():
+            nonlocal a
+            global b
+            print ("value a (before)(nonlocal):", a)
+            print ("value b (before)(global):", b)
+            print ("value c:", c)
+            print()
+
+            b.append(50000)
+            a += 100
+            print ("value a (after)(nonlocal):", a)
+            print("value b (after)(global):", b)
+
+        inner_simple()
+
+    simple()
+    print_equality(a,b, "Test 17")
